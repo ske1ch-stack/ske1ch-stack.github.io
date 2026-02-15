@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ske1ch.shade | Price List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #0f0f0f;
+            --accent-color: #ff2a2a; /* Твій червоний */
+            --text-color: #ffffff;
+            --text-secondary: #888;
+            --border-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 40px 20px;
+            background-image: 
+                radial-gradient(circle at top right, rgba(255, 42, 42, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at bottom left, rgba(255, 42, 42, 0.05) 0%, transparent 40%);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .header h1 span {
+            color: var(--accent-color);
+            text-shadow: 0 0 20px rgba(255, 42, 42, 0.6);
+        }
+
+        .category-title {
+            text-align: left;
+            max-width: 1200px;
+            margin: 40px auto 20px;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Container grid */
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px 30px;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 40px rgba(255, 42, 42, 0.1);
+        }
+
+        /* Badge for Popular card */
+        .badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent-color);
+            color: #000;
+            font-weight: 800;
+            padding: 6px 15px;
+            border-bottom-left-radius: 15px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .badge.blue {
+            background: #00b8ff;
+            color: #000;
+        }
+
+        .card-header {
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        .service-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--text-color);
+            display: flex;
+            align-items: baseline;
+        }
+        
+        .price span.currency {
+            color: var(--accent-color);
+        }
+
+        .price span.period {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-left: 5px;
+        }
+
+        /* List Features */
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .features li i {
+            color: var(--accent-color);
+            margin-right: 10px;
+            font-size: 1rem;
+            margin-top: 3px;
+        }
+
+        /* Button */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 10px;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #000;
+            box-shadow: 0 0 20px rgba(255, 42, 42, 0.4);
+        }
+
+        .card.featured {
+            border: 1px solid var(--accent-color);
+            background: linear-gradient(180deg, rgba(255, 42, 42, 0.08) 0%, var(--card-bg) 100%);
+        }
+        
+        .contact-footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .pricing-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Service <span>Menu</span></h1>
+        <p>Choose your upgrade</p>
+    </header>
+
+    <!-- INSTAGRAM & PERSONAL -->
+    <h2 class="category-title">Instagram & Personal</h2>
+    <div class="pricing-container">
+        
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-brands fa-instagram service-icon"></i>
+                <h2 class="service-name">Insta Pack</h2>
+                <div class="price"><span class="currency">$</span>40 <span class="period">/ one-time</span></div>
+            </div>
+            <ul class="features">
+                <li><i class="fa-solid fa-check"></i> 3D Аватар (Персонаж)</li>
+                <li><i class="fa-solid fa-check"></i> Обкладинки Highlights (5 шт)</li>
+                <li><i class="fa-solid fa-check"></i> Дизайн шапки профілю</li>
+                <li><i class="fa-solid fa-bolt"></i> Бонус: Гайд по стилю</li>
+            </ul>
+            <a href="https://t.me/sk9tch" class="btn">Order</a>
+        </div>
+
+        <div class="card featured">
+            <div class="badge">Popular</div>
+            <div class="card-header">
+                <i class="fa-solid fa-layer-group service-icon"></i>
+                <h2 class="service-name">Content Maker</h2>
+                <div class="price"><span class="currency">$</span>150 <span class="period">/ місяць</span></div>
+            </div>
+            <ul class="features">
+                <li><i class="fa-solid fa-check"></i> Розробка візуальної сітки (9 постів)</li>
+                <li><i class="fa-solid fa-check"></i> Генерація AI фонів для товару</li>
+                <li><i class="fa-solid fa-check"></i> 5 шаблонів Stories</li>
+                <li><i class="fa-solid fa-check"></i> Ретуш та корекція кольору</li>
+                <li><i class="fa-solid fa-check"></i> Підтримка 24/7</li>
+            </ul>
+            <a href="https://t.me/sk9tch" class="btn">Order</a>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-brands fa-tiktok service-icon"></i>
+                <h2 class="service-name">Reels / TikTok</h2>
+                <div class="price"><span class="currency">$</span>200 <span class="period">/ 10 відео</span></div>
+            </div>
+            <ul class="features">
+                <li><i class="fa-solid fa-check"></i> Монтаж динамічних Reels</li>
+                <li><i class="fa-solid fa-check"></i> Накладання субтитрів та ефектів</li>
+                <li><i class="fa-solid fa-check"></i> AI генерація кадрів для відео</li>
+                <li><i class="fa-solid fa-check"></i> Підбір трендової музики</li>
+            </ul>
+            <a href="https://t.me/sk9tch" class="btn">Order</a>
+        </div>
+
+    </div>
+
+    <!-- PLATFORMS (TELEGRAM & YOUTUBE) -->
+    <h2 class="category-title">Telegram & YouTube</h2>
+    <div class="pricing-container">
+
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-brands fa-telegram service-icon"></i>
+                <h2 class="service-name">Telegram Channel</h2>
+                <div class="price"><span class="currency">$</span>60 <span class="period">/ one-time</span></div>
+            </div>
+            <ul class="features">
+                <li><i class="fa-solid fa-check"></i> Преміум логотип каналу</li>
+                <li><i class="fa-solid fa-check"></i> Пакет AI стікерів (5 шт)</li>
+                <li><i class="fa-solid fa-check"></i> Шаблони для новин/постів</li>
+                <li><i class="fa-solid fa-check"></i> Опис та SEO налаштування</li>
+            </ul>
+            <a href="https://t.me/sk9tch" class="btn">Order</a>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <i class="fa-brands fa-youtube service-icon"></i>
+                <h2 class="service-name">YouTube Pack</h2>
+                <div class="price"><span class="currency">$</span>80 <span class="period">/ one-time</span></div>
+            </div>
+            <ul class="features">
+                <li><i class="fa-solid fa-check"></i> Шапка каналу (Banner)</li>
+                <li><i class="fa-solid fa-check"></i> Аватарка</li>
+                <li><i class="fa-solid fa-check"></i> 3 клікабельні прев'ю (Thumbnails)</li>
+                <li><i class="fa-solid fa-check"></i> Базова інтро-анімація (5 сек)</li>
+            </ul>
+            <a href="https://t.me/sk9tch" class="btn">Order</a>
+        </div>
+
+    </div>
+
+    <!-- BUSINESS TURNKEY -->
+    <h2 class="category-title">Business Solutions</h2>
+    <div class="pricing-container">
+
+        <div class="card">
+            <div class="badge blue">Startup</div>
+            <div class="card-header">
+                <i class="fa-solid fa-fingerprint service-icon" style="color: #00b8ff;"></i>
+                <h2 class="service-name">Brand Identity</h2>
+                <div class="price"><span class="currency" style="color: #00b8ff;">$</span>250 <span class="period">/ проект</span></div>
+            </div>
+            <ul class="features">
+                <li><i class="fa-solid fa-check" style="color: #00b8ff;"></i> Розробка Логотипу (3 варіанти)</li>
+                <li><i class="fa-solid fa-check" style="color: #00b8ff;"></i> Підбір шрифтів та кольорів</li>
+                <li><i class="fa-solid fa-check" style="color: #00b8ff;"></i> Оформлення всіх соцмереж</li>
+                <li><i class="fa-solid fa-check" style="color: #00b8ff;"></i> Дизайн візитки / флаєра</li>
+                <li><i class="fa-solid fa-check" style="color: #00b8ff;"></i> Міні-брендбук (PDF)</li>
+            </ul>
+            <a href="https://t.me/sk9tch" class="btn" style="border-color: #00b8ff; color: #fff;">Order</a>
+        </div>
+
+        <div class="card featured" style="border-color: #ff2a2a;">
+            <div class="badge">VIP</div>
+            <div class="card-header">
+                <i class="fa-solid fa-rocket service-icon"></i>
+                <h2 class="service-name">Business Launch</h2>
+                <div class="price"><span class="currency">$</span>500 <span class="period">/ повний запуск</span></div>
+            </div>
+            <ul class="features">
+                <li><i class="fa-solid fa-check"></i> Повна розробка Айдентики</li>
+                <li><i class="fa-solid fa-check"></i> Сайт-візитка (One Page)</li>
+                <li><i class="fa-solid fa-check"></i> Контент-план на місяць</li>
+                <li><i class="fa-solid fa-check"></i> Створення 15 одиниць контенту</li>
+                <li><i class="fa-solid fa-check"></i> Упаковка 3-х соцмереж під ключ</li>
+            </ul>
+            <a href="https://t.me/sk9tch" class="btn">Start Now</a>
+        </div>
+
+    </div>
+
+    <div class="contact-footer">
+        © 2024 ske1ch.shade | Ціни можуть змінюватися залежно від складності ТЗ
+    </div>
+
+</body>
+</html>
