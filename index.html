@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ske1ch.shade | 3D & AI Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --accent-color: #ff2a2a; /* Неоновий Червоний */
+            --accent-hover: #cc2222;
+            --text-color: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 42, 42, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 184, 255, 0.15) 0%, transparent 40%);
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Аватарка з ефектом світіння */
+        .avatar-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 10px;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(255, 42, 42, 0.3);
+            position: relative;
+            z-index: 2;
+            background-color: #222; /* Заглушка, поки не завантажиться фото */
+        }
+
+        .avatar-glow {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent-color), #ff0055);
+            z-index: 1;
+            filter: blur(15px);
+            opacity: 0.7;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+            100% { opacity: 0.5; transform: scale(1); }
+        }
+
+        /* Текстовий блок */
+        .profile-info {
+            text-align: center;
+        }
+
+        .username {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .username span {
+            color: var(--accent-color);
+        }
+
+        .bio {
+            font-size: 14px;
+            color: #aaa;
+            max-width: 300px;
+            line-height: 1.4;
+        }
+
+        /* Кнопки посилань (Glassmorphism) */
+        .links-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 16px 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .link-icon {
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .link-text {
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .link-arrow {
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        .link-card:hover .link-arrow {
+            opacity: 1;
+            transform: translateX(3px);
+            color: var(--accent-color);
+        }
+
+        /* Особлива кнопка (Primary) */
+        .link-card.primary {
+            background: linear-gradient(90deg, rgba(255, 42, 42, 0.1), rgba(0, 184, 255, 0.1));
+            border-color: rgba(255, 42, 42, 0.3);
+        }
+
+        .link-card.primary:hover {
+            background: linear-gradient(90deg, rgba(255, 42, 42, 0.2), rgba(0, 184, 255, 0.2));
+            box-shadow: 0 0 20px rgba(255, 42, 42, 0.15);
+        }
+
+        /* Футер */
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Аватарка -->
+        <div class="avatar-container">
+            <div class="avatar-glow"></div>
+            <!-- Встав сюди посилання на свою нову аватарку замість placeholder -->
+            <img src="photo.jpg" alt="Avatar" class="avatar">
+        </div>
+
+        <!-- Інформація -->
+        <div class="profile-info">
+            <h1 class="username">ske1ch<span>.shade</span></h1>
+            <p class="bio">AI Visuals | 3D Design | Motion<br>Перетворюю ідеї на візуальний контент</p>
+        </div>
+
+        <!-- Посилання -->
+        <div class="links-container">
+            
+            <!-- Основна кнопка -->
+            <a href="https://t.me/tviy_nickname" class="link-card primary" target="_blank">
+                <div class="link-content">
+                    <i class="fa-brands fa-telegram link-icon" style="color: #ff2a2a;"></i>
+                    <span class="link-text">Замовити Дизайн / Прайс</span>
+                </div>
+                <i class="fa-solid fa-arrow-right link-arrow"></i>
+            </a>
+
+            <!-- Портфоліо -->
+            <a href="https://www.behance.net/" class="link-card" target="_blank">
+                <div class="link-content">
+                    <i class="fa-brands fa-behance link-icon"></i>
+                    <span class="link-text">Моє Портфоліо</span>
+                </div>
+                <i class="fa-solid fa-arrow-right link-arrow"></i>
+            </a>
+
+            <!-- Instagram (повернутися) -->
+            <a href="https://instagram.com/ske1ch.shade" class="link-card" target="_blank">
+                <div class="link-content">
+                    <i class="fa-brands fa-instagram link-icon"></i>
+                    <span class="link-text">Instagram</span>
+                </div>
+                <i class="fa-solid fa-arrow-right link-arrow"></i>
+            </a>
+
+            <!-- TikTok (якщо є) -->
+            <a href="#" class="link-card" target="_blank">
+                <div class="link-content">
+                    <i class="fa-brands fa-tiktok link-icon"></i>
+                    <span class="link-text">TikTok (Backstage)</span>
+                </div>
+                <i class="fa-solid fa-arrow-right link-arrow"></i>
+            </a>
+
+        </div>
+
+        <div class="footer">
+            © 2024 Ske1ch Design
+        </div>
+    </div>
+
+</body>
+</html>
