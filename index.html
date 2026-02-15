@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ske1ch.shade | 3D & AI Design</title>
+    <title>ske1ch.shade | Links</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
@@ -64,7 +64,7 @@
             box-shadow: 0 0 20px rgba(255, 42, 42, 0.3);
             position: relative;
             z-index: 2;
-            background-color: #222; /* Заглушка, поки не завантажиться фото */
+            background-color: #222;
         }
 
         .avatar-glow {
@@ -87,7 +87,6 @@
             100% { opacity: 0.5; transform: scale(1); }
         }
 
-        /* Текстовий блок */
         .profile-info {
             text-align: center;
         }
@@ -110,7 +109,6 @@
             line-height: 1.4;
         }
 
-        /* Кнопки посилань (Glassmorphism) */
         .links-container {
             width: 100%;
             display: flex;
@@ -170,18 +168,18 @@
             color: var(--accent-color);
         }
 
-        /* Особлива кнопка (Primary) */
+        /* Стиль для кнопки Прайсу */
+        .link-card.price-btn {
+            background: rgba(255, 42, 42, 0.05);
+            border-color: rgba(255, 42, 42, 0.4);
+        }
+
+        /* Стиль для головної кнопки (Telegram) */
         .link-card.primary {
             background: linear-gradient(90deg, rgba(255, 42, 42, 0.1), rgba(0, 184, 255, 0.1));
             border-color: rgba(255, 42, 42, 0.3);
         }
 
-        .link-card.primary:hover {
-            background: linear-gradient(90deg, rgba(255, 42, 42, 0.2), rgba(0, 184, 255, 0.2));
-            box-shadow: 0 0 20px rgba(255, 42, 42, 0.15);
-        }
-
-        /* Футер */
         .footer {
             margin-top: 20px;
             font-size: 12px;
@@ -195,7 +193,7 @@
         <!-- Аватарка -->
         <div class="avatar-container">
             <div class="avatar-glow"></div>
-            <!-- Встав сюди посилання на свою нову аватарку замість placeholder -->
+            <!-- ❗ ЗМІНИТИ ТУТ: Заміни "avatar.jpg" на назву твого файлу фото, якщо вона інша -->
             <img src="photo.jpg" alt="Avatar" class="avatar">
         </div>
 
@@ -208,16 +206,28 @@
         <!-- Посилання -->
         <div class="links-container">
             
-            <!-- Основна кнопка -->
+            <!-- 1. КНОПКА TELEGRAM -->
+            <!-- ❗ ЗМІНИТИ ТУТ: Встав своє посилання на Telegram -->
             <a href="https://t.me/sk9tch" class="link-card primary" target="_blank">
                 <div class="link-content">
                     <i class="fa-brands fa-telegram link-icon" style="color: #ff2a2a;"></i>
-                    <span class="link-text">Замовити Дизайн / Прайс</span>
+                    <span class="link-text">Написати мені (Order)</span>
                 </div>
                 <i class="fa-solid fa-arrow-right link-arrow"></i>
             </a>
 
-            <!-- Портфоліо -->
+            <!-- 2. КНОПКА ПРАЙС-ЛИСТ (НОВА) -->
+            <!-- Ця кнопка відкриває файл price.html, який має бути в тій самій папці -->
+            <a href="price.html" class="link-card price-btn">
+                <div class="link-content">
+                    <i class="fa-solid fa-tag link-icon" style="color: #fff;"></i>
+                    <span class="link-text">💸 Переглянути Прайс</span>
+                </div>
+                <i class="fa-solid fa-arrow-right link-arrow"></i>
+            </a>
+
+            <!-- 3. КНОПКА ПОРТФОЛІО -->
+            <!-- ❗ ЗМІНИТИ ТУТ: Встав посилання на Behance або Google Drive -->
             <a href="https://www.behance.net/" class="link-card" target="_blank">
                 <div class="link-content">
                     <i class="fa-brands fa-behance link-icon"></i>
@@ -226,7 +236,8 @@
                 <i class="fa-solid fa-arrow-right link-arrow"></i>
             </a>
 
-            <!-- Instagram (повернутися) -->
+            <!-- 4. КНОПКА INSTAGRAM -->
+            <!-- ❗ ЗМІНИТИ ТУТ: Встав посилання на свій Instagram -->
             <a href="https://instagram.com/ske1ch.shade" class="link-card" target="_blank">
                 <div class="link-content">
                     <i class="fa-brands fa-instagram link-icon"></i>
@@ -235,7 +246,8 @@
                 <i class="fa-solid fa-arrow-right link-arrow"></i>
             </a>
 
-            <!-- TikTok (якщо є) -->
+            <!-- 5. КНОПКА TIKTOK -->
+            <!-- ❗ ЗМІНИТИ ТУТ: Встав посилання на TikTok -->
             <a href="#" class="link-card" target="_blank">
                 <div class="link-content">
                     <i class="fa-brands fa-tiktok link-icon"></i>
