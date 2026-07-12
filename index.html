@@ -11,7 +11,7 @@
     <style>
         :root {
             --bg-color: #f6f8fa; /* Світло-сірий фон GitHub */
-            --accent-color: #cf222e; /* Червоний акцент бренду */
+            --accent-color: #6e7781; /* Сірий акцент для .shade */
             --primary-btn: #2da44e; /* Зелений для основної дії */
             --text-color: #24292f; /* Темно-сірий текст */
             --text-muted: #57606a; /* Приглушений текст */
@@ -29,6 +29,10 @@
         body {
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg-color);
+            /* Світло-сірий градієнт для об'єму */
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(208, 215, 222, 0.6) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(208, 215, 222, 0.4) 0%, transparent 40%);
             color: var(--text-color);
             min-height: 100vh;
             display: flex;
@@ -46,7 +50,7 @@
             gap: 20px;
         }
 
-        /* Аватарка (без неонового світіння, чистий UI) */
+        /* Аватарка */
         .avatar-container {
             position: relative;
             width: 120px;
@@ -147,8 +151,8 @@
 
         /* Стиль для кнопки Прайсу */
         .link-card.price-btn {
-            border-color: var(--accent-color);
-            background-color: #fffafb;
+            border-color: var(--card-border);
+            background-color: #f6f8fa;
         }
         
         .link-card.price-btn .link-icon {
@@ -185,7 +189,7 @@
     <div class="container">
         <!-- Аватарка -->
         <div class="avatar-container">
-            <img src="photo.jpg" alt="Avatar" class="avatar">
+            <img src="photo_1.jpg" alt="Avatar" class="avatar">
         </div>
 
         <!-- Інформація -->
