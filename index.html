@@ -10,12 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #050505;
-            --accent-color: #ff2a2a; /* Неоновий Червоний */
-            --accent-hover: #cc2222;
-            --text-color: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-color: #f6f8fa; /* Світло-сірий фон GitHub */
+            --accent-color: #cf222e; /* Червоний акцент бренду */
+            --primary-btn: #2da44e; /* Зелений для основної дії */
+            --text-color: #24292f; /* Темно-сірий текст */
+            --text-muted: #57606a; /* Приглушений текст */
+            --card-bg: #ffffff; /* Білі картки */
+            --card-border: #d0d7de; /* Тонка рамка */
+            --card-hover: #f3f4f6; /* Колір при наведенні */
         }
 
         * {
@@ -32,9 +34,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 42, 42, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 184, 255, 0.15) 0%, transparent 40%);
             padding: 20px;
         }
 
@@ -47,7 +46,7 @@
             gap: 20px;
         }
 
-        /* Аватарка з ефектом світіння */
+        /* Аватарка (без неонового світіння, чистий UI) */
         .avatar-container {
             position: relative;
             width: 120px;
@@ -60,31 +59,9 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--accent-color);
-            box-shadow: 0 0 20px rgba(255, 42, 42, 0.3);
-            position: relative;
-            z-index: 2;
-            background-color: #222;
-        }
-
-        .avatar-glow {
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--accent-color), #ff0055);
-            z-index: 1;
-            filter: blur(15px);
-            opacity: 0.7;
-            animation: pulse 3s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-            100% { opacity: 0.5; transform: scale(1); }
+            border: 2px solid var(--card-border);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+            background-color: #fff;
         }
 
         .profile-info {
@@ -95,7 +72,7 @@
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 5px;
-            letter-spacing: 1px;
+            letter-spacing: -0.5px;
         }
 
         .username span {
@@ -104,40 +81,38 @@
 
         .bio {
             font-size: 14px;
-            color: #aaa;
+            color: var(--text-muted);
             max-width: 300px;
             line-height: 1.4;
+            font-weight: 500;
         }
 
         .links-container {
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .link-card {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             padding: 16px 20px;
-            border-radius: 16px;
+            border-radius: 8px;
             text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            color: var(--text-color);
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 1px 0 rgba(27,31,36,0.04);
         }
 
         .link-card:hover {
             transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--accent-color);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background: var(--card-hover);
+            border-color: #1f2328;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
         }
 
         .link-content {
@@ -150,6 +125,7 @@
             font-size: 20px;
             width: 24px;
             text-align: center;
+            color: var(--text-muted);
         }
 
         .link-text {
@@ -159,31 +135,48 @@
 
         .link-arrow {
             opacity: 0.5;
+            color: var(--text-muted);
             transition: 0.3s;
         }
 
         .link-card:hover .link-arrow {
             opacity: 1;
             transform: translateX(3px);
-            color: var(--accent-color);
+            color: var(--text-color);
         }
 
         /* Стиль для кнопки Прайсу */
         .link-card.price-btn {
-            background: rgba(255, 42, 42, 0.05);
-            border-color: rgba(255, 42, 42, 0.4);
+            border-color: var(--accent-color);
+            background-color: #fffafb;
+        }
+        
+        .link-card.price-btn .link-icon {
+            color: var(--accent-color);
         }
 
         /* Стиль для головної кнопки (Telegram) */
         .link-card.primary {
-            background: linear-gradient(90deg, rgba(255, 42, 42, 0.1), rgba(0, 184, 255, 0.1));
-            border-color: rgba(255, 42, 42, 0.3);
+            background-color: var(--primary-btn);
+            border-color: rgba(27,31,36,0.15);
+            color: #ffffff;
+        }
+        
+        .link-card.primary:hover {
+            background-color: #2c974b;
+            border-color: rgba(27,31,36,0.15);
+        }
+
+        .link-card.primary .link-icon,
+        .link-card.primary .link-arrow {
+            color: #ffffff;
+            opacity: 1;
         }
 
         .footer {
             margin-top: 20px;
             font-size: 12px;
-            color: #555;
+            color: var(--text-muted);
         }
     </style>
 </head>
@@ -192,8 +185,6 @@
     <div class="container">
         <!-- Аватарка -->
         <div class="avatar-container">
-            <div class="avatar-glow"></div>
-            <!-- ❗ ЗМІНИТИ ТУТ: Заміни "avatar.jpg" на назву твого файлу фото, якщо вона інша -->
             <img src="photo.jpg" alt="Avatar" class="avatar">
         </div>
 
@@ -206,28 +197,25 @@
         <!-- Посилання -->
         <div class="links-container">
             
-            <!-- 1. КНОПКА TELEGRAM -->
-            <!-- ❗ ЗМІНИТИ ТУТ: Встав своє посилання на Telegram -->
+            <!-- 1. КНОПКА TELEGRAM (Головна дія) -->
             <a href="https://t.me/sk9tch" class="link-card primary" target="_blank">
                 <div class="link-content">
-                    <i class="fa-brands fa-telegram link-icon" style="color: #ff2a2a;"></i>
+                    <i class="fa-brands fa-telegram link-icon"></i>
                     <span class="link-text">Написати мені (Order)</span>
                 </div>
                 <i class="fa-solid fa-arrow-right link-arrow"></i>
             </a>
 
-            <!-- 2. КНОПКА ПРАЙС-ЛИСТ (НОВА) -->
-            <!-- Ця кнопка відкриває файл price.html, який має бути в тій самій папці -->
+            <!-- 2. КНОПКА ПРАЙС-ЛИСТ -->
             <a href="price.html" class="link-card price-btn">
                 <div class="link-content">
-                    <i class="fa-solid fa-tag link-icon" style="color: #fff;"></i>
-                    <span class="link-text">💸 Переглянути Прайс</span>
+                    <i class="fa-solid fa-tag link-icon"></i>
+                    <span class="link-text">Переглянути Прайс</span>
                 </div>
                 <i class="fa-solid fa-arrow-right link-arrow"></i>
             </a>
 
             <!-- 3. КНОПКА ПОРТФОЛІО -->
-            <!-- ❗ ЗМІНИТИ ТУТ: Встав посилання на Behance або Google Drive -->
             <a href="https://www.behance.net/ske1ch" class="link-card" target="_blank">
                 <div class="link-content">
                     <i class="fa-brands fa-behance link-icon"></i>
@@ -237,7 +225,6 @@
             </a>
 
             <!-- 4. КНОПКА INSTAGRAM -->
-            <!-- ❗ ЗМІНИТИ ТУТ: Встав посилання на свій Instagram -->
             <a href="https://instagram.com/ske1ch.shade" class="link-card" target="_blank">
                 <div class="link-content">
                     <i class="fa-brands fa-instagram link-icon"></i>
@@ -247,7 +234,6 @@
             </a>
 
             <!-- 5. КНОПКА TIKTOK -->
-            <!-- ❗ ЗМІНИТИ ТУТ: Встав посилання на TikTok -->
             <a href="#" class="link-card" target="_blank">
                 <div class="link-content">
                     <i class="fa-brands fa-tiktok link-icon"></i>
